@@ -82,6 +82,10 @@ Vagrant.configure(2) do |config|
 	 export PATH="$PATH:$JRUBY_HOME/bin"
 	 echo "PATH=\"$PATH\"" | sudo tee /etc/environment
 	 echo "JRUBY_HOME=\"$JRUBY_HOME\"" | sudo tee -a /etc/environment
-	 
+	 cd /vagrant
+	 sudo gem install bundler
+	 gem install bundler
+	 sudo gem install rspec
+	 gem install rspec
   SHELL
 end
