@@ -67,25 +67,16 @@ Vagrant.configure(2) do |config|
   # Enable provisioning with a shell script. Additional provisioners such as
   # Puppet, Chef, Ansible, Salt, and Docker are also available. Please see the
   # documentation for more information about their specific syntax and use.
+  
   config.vm.provision "shell", inline: <<-SHELL
      # Grub workarounds for reliable boot
      echo "GRUB_RECORDFAIL_TIMEOUT=0" | sudo tee -a /etc/default/grub
      sudo update-grub
      
 	 sudo apt-get update -y
-     sudo apt-get install -y git maven
-	 cd /opt
-	 sudo wget https://s3.amazonaws.com/jruby.org/downloads/1.7.22/jruby-bin-1.7.22.tar.gz
-	 sudo tar xvfz jruby-bin-1.7.22.tar.gz
-	 sudo ln -s jruby-1.7.22 jruby
-	 export JRUBY_HOME="/opt/jruby"
-	 export PATH="$PATH:$JRUBY_HOME/bin"
-	 echo "PATH=\"$PATH\"" | sudo tee /etc/environment
-	 echo "JRUBY_HOME=\"$JRUBY_HOME\"" | sudo tee -a /etc/environment
-	 cd /vagrant
-	 sudo gem install bundler
-	 gem install bundler
-	 sudo gem install rspec
-	 gem install rspec
+     sudo apt-get install -y git maven openjdk-7-jdk
   SHELL
+  
+  config.vm.provision :shell, path: "install-rvm.sh", args: "stable", privileged: false
+  config.vm.provision :shell, path: "install-ruby.sh", args: "jruby", privileged: false
 end
