@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 
-rvm --debug install $1 
-rvm --debug --default use jruby 
+source $HOME/.rvm/scripts/rvm
+
+rvm install $1 
+rvm --default use $1
 
 # shift
 
