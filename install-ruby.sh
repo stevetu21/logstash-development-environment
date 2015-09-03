@@ -2,8 +2,8 @@
 
 source $HOME/.rvm/scripts/rvm
 
-rvm install $1 --debug
-rvm --default use jruby --debug
+rvm --debug install $1 
+rvm --debug --default use jruby 
 
 # shift
 

@@ -73,10 +73,10 @@ Vagrant.configure(2) do |config|
      echo "GRUB_RECORDFAIL_TIMEOUT=0" | sudo tee -a /etc/default/grub
      sudo update-grub
      
+	 sudo apt-add-repository -y ppa:rael-gc/rvm
 	 sudo apt-get update -y
-     sudo apt-get install -y git maven openjdk-7-jdk
+     sudo apt-get install -y openjdk-7-jdk git maven rvm
   SHELL
-  
-  config.vm.provision :shell, path: "install-rvm.sh", args: "stable", privileged: false
+
   config.vm.provision :shell, path: "install-ruby.sh", args: "jruby-1.7.19", privileged: false
 end
