@@ -74,11 +74,9 @@ Vagrant.configure(2) do |config|
      sudo update-grub
      
 	 sudo apt-add-repository -y ppa:rael-gc/rvm
-	 sudo add-apt-repository -y ppa:saiarcot895/myppa
 	 sudo apt-get update -y
-     sudo apt-get install -y apt-fast 
-	 sudo apt-fast install -y openjdk-7-jdk git maven rvm
+     sudo apt-get install -y openjdk-7-jdk git maven rvm
   SHELL
 
-  # config.vm.provision :shell, path: "install-ruby.sh", args: "jruby-1.7.19", privileged: true
+  config.vm.provision :shell, path: "install-ruby.sh", args: "jruby-1.7.19", privileged: false
 end
