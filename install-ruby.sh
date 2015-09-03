@@ -2,12 +2,15 @@
 
 source $HOME/.rvm/scripts/rvm
 
-rvm use --default --install $1
+rvm install $1
+rvm --default use $1
 
-shift
+# shift
 
-if (( $# ))
-then gem install $@
-fi
+# if (( $# ))
+# then gem install $@
+# fi
 
 rvm cleanup all
+
+ruby -v

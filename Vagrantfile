@@ -75,14 +75,8 @@ Vagrant.configure(2) do |config|
      
 	 sudo apt-get update -y
      sudo apt-get install -y git maven openjdk-7-jdk
-	 
-	 gpg --keyserver hkp://keys.gnupg.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3
-	 curl -sSL https://get.rvm.io | bash -s stable
-	 rvm install jruby-1.7.19
-	 rvm --default use jruby
-	 ruby -v
   SHELL
   
-  # config.vm.provision :shell, path: "install-rvm.sh", args: "stable", privileged: false
-  #config.vm.provision :shell, path: "install-ruby.sh", args: "jruby", privileged: false
+  config.vm.provision :shell, path: "install-rvm.sh", args: "stable", privileged: false
+  config.vm.provision :shell, path: "install-ruby.sh", args: "jruby-1.7.19", privileged: false
 end
