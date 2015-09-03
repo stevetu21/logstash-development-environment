@@ -77,6 +77,6 @@ Vagrant.configure(2) do |config|
      sudo apt-get install -y git maven openjdk-7-jdk
   SHELL
   
-  config.vm.provision :shell, path: "install-rvm.sh", args: "stable", privileged: false
-  config.vm.provision :shell, path: "install-ruby.sh", args: "jruby", privileged: false
+  #config.vm.provision :shell, path: "install-rvm.sh", args: "stable", privileged: false
+  #config.vm.provision :shell, path: "install-ruby.sh", args: "jruby", privileged: false
 end
